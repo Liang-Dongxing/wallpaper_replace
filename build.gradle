@@ -6,15 +6,25 @@ plugins {
 group 'com.ldx'
 version '1.0-SNAPSHOT'
 
+mainClassName = 'com.ldx.MainApp'
+
 javafx {
-    version = "15.0.1"
+    version = "11.0.1"
     modules = ['javafx.controls', 'javafx.fxml']
 }
 
-mainClassName = 'com.ldx.MainApp'
+allprojects {
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public/'
+        }
+        mavenLocal()
+        mavenCentral()
+    }
+}
 
-repositories {
-    mavenCentral()
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }
 
 dependencies {
